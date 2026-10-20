@@ -288,13 +288,14 @@
   function pagePhoto() {
     var folder = (C.gallery || {}).folder || '우리 둘';
     var list = photos.length ? photos.map(function (p, i) {
-      return '<article class="post">' +
+      return '<article class="post"' + (i >= 6 ? ' hidden' : '') + '>' +
         '<header class="post__head"><b>' + esc(p.title || folder + ' #' + (i + 1)) + '</b><span>' + dotDate + '</span></header>' +
         '<button type="button" class="post__img" data-action="lightbox" data-index="' + i + '" aria-label="사진 크게 보기">' +
         '<img src="' + esc(safeUrl(p.src)) + '" alt="' + esc(p.title || '사진 ' + (i + 1)) + '" loading="lazy"></button>' +
         '<footer class="post__foot"><button type="button" class="cy-link" data-action="scrap">스크랩</button> | <span>댓글 ♥</span></footer></article>';
     }).join('') : '<div class="empty">' + minimi('groom', 40) + minimi('bride', 40) + '<p>사진첩 준비 중이에요.<br>곧 예쁜 사진이 올라올 거예요!</p></div>';
-    return '<div class="folders"><span class="folder is-on">📁 ' + esc(folder) + ' (' + photos.length + ')</span></div>' + list;
+    return '<div class="folders"><span class="folder is-on">📁 ' + esc(folder) + ' (' + photos.length + ')</span></div>' + list +
+      (photos.length > 6 ? '<p class="row center"><button type="button" class="cy-btn" data-action="photo-more">사진 더보기 ▼</button></p>' : '');
   }
 
   /* ── 페이지: 오시는 길 ────────────────────────────────────────────── */
@@ -604,6 +605,10 @@
     }
     else if (a === 'scrap') copy(pageUrl + '#/photo');
     else if (a === 'gb-more') loadGuestbook(true);
+    else if (a === 'photo-more') {
+      $$('.post[hidden]').slice(0, 6).forEach(function (el) { el.hidden = false; });
+      if (!$('.post[hidden]')) t.parentNode.remove();
+    }
   });
   document.addEventListener('change', function (e) {
     if (e.target.getAttribute('data-action') === 'wave') { wave(e.target.value); e.target.value = ''; }

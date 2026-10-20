@@ -5,8 +5,8 @@
  *  ✅ 청첩장 내용은 "이 파일 하나만" 고치면 됩니다.
  *     사진은 images 폴더에 올리세요.
  *
- *  ⚠️ 지금 들어있는 이름·날짜·장소는 모두 "예시"입니다. (홍길동 ♥ 성춘향)
- *     하객에게 보내기 전에 반드시 실제 정보로 바꿔주세요.
+ *  ℹ️ 지금 들어있는 내용은 wedding-invitation 템플릿의 데모 정보입니다.
+ *     (임현 ♥ 홍상아 · 날짜는 시연용 · 사진은 AI 일러스트)
  *
  *  ✍️ 고치는 규칙
  *     1. 글자는 항상 따옴표 '...' 안에 씁니다.         예) name: '홍길동',
@@ -21,7 +21,7 @@ window.WEDDING = {
    * 🏠 미니홈피 꾸미기
    * ────────────────────────────────────────────────────────────── */
   hompy: {
-    title: '',                     // 미니홈피 제목. 비우면 '길동 ♥ 춘향의 미니홈피' 자동
+    title: '',                     // 미니홈피 제목. 비우면 '현 ♥ 상아의 미니홈피' 자동
     mood: '설렘',                  // 오늘의 기분 (행복, 설렘, 두근두근 …)
     // 프로필 아래 한 줄 소개 (싸이월드 감성으로!)
     intro: `우리… 결혼해요 ♥
@@ -33,8 +33,8 @@ window.WEDDING = {
    * 🔗 카카오톡·문자로 링크 보낼 때 보이는 미리보기
    * ────────────────────────────────────────────────────────────── */
   meta: {
-    title: '',        // 비우면 '길동 ♥ 춘향 결혼합니다' 자동
-    description: '',  // 비우면 '2027년 5월 15일 토요일 낮 12시 · 예식장' 자동
+    title: '',        // 비우면 '현 ♥ 상아 결혼합니다' 자동
+    description: '',  // 비우면 '2030년 12월 14일 토요일 오전 11시 · 예식장' 자동
   },
 
   /* ──────────────────────────────────────────────────────────────
@@ -43,36 +43,36 @@ window.WEDDING = {
    *    - 돌아가신 부모님은 deceased: true  (이름 앞에 故 표시)
    * ────────────────────────────────────────────────────────────── */
   groom: {
-    name: '홍길동',        // 성 포함 전체 이름 (예시)
-    firstName: '',         // 이름만. 비우면 자동 (홍길동 → 길동)
+    name: '임현',          // 성 포함 전체 이름
+    firstName: '현',       // 이름만. 비우면 자동 (홍길동 → 길동)
     relation: '아들',      // 장남, 차남, 아들 등
     phone: '',
-    father: { name: '홍판서', phone: '', deceased: false },
-    mother: { name: '춘섬', phone: '', deceased: false },
+    father: { name: '임주인', phone: '', deceased: false },
+    mother: { name: '임양미', phone: '', deceased: true },
   },
 
   bride: {
-    name: '성춘향',
-    firstName: '',
+    name: '홍상아',
+    firstName: '상아',
     relation: '딸',        // 장녀, 차녀, 딸 등
     phone: '',
-    father: { name: '성참판', phone: '', deceased: false },
-    mother: { name: '월매', phone: '', deceased: false },
+    father: { name: '홍광원', phone: '', deceased: false },
+    mother: { name: '박현순', phone: '', deceased: false },
   },
 
   /* ──────────────────────────────────────────────────────────────
-   * 💒 예식 정보 (예시 값 — 꼭 바꾸세요)
+   * 💒 예식 정보
    * ────────────────────────────────────────────────────────────── */
   wedding: {
-    date: '2027-05-15',      // 년-월-일 (꼭 이 형식으로)
-    time: '12:00',           // 24시간 형식 (오후 1시 → '13:00')
-    venue: '○○웨딩홀',        // 예식장 이름
-    hall: '3층 그랜드홀',      // 홀 이름 (없으면 '')
-    address: '서울특별시 ○○구 ○○로 123',
-    tel: '',                 // 예식장 전화번호 (없으면 '')
+    date: '2030-12-14',      // 년-월-일 (꼭 이 형식으로)
+    time: '11:00',           // 24시간 형식 (오후 1시 → '13:00')
+    venue: '아펠가모 잠실',     // 예식장 이름
+    hall: '2층',             // 홀 이름 (없으면 '')
+    address: '서울 송파구 신천동 7-11',
+    tel: '02-2144-0230',     // 예식장 전화번호 (없으면 '')
     // 지도 위치 (선택). 구글지도에서 예식장을 길게 누르면 나오는 숫자. 모르면 비워두세요.
-    lat: '',
-    lng: '',
+    lat: 37.5159918,
+    lng: 127.0996652,
   },
 
   /* ──────────────────────────────────────────────────────────────
@@ -85,15 +85,14 @@ window.WEDDING = {
    * 📓 다이어리 (인사말)
    * ────────────────────────────────────────────────────────────── */
   diary: {
-    title: '저희 결혼합니다',
-    weather: '☀️',           // 날씨 아이콘
-    message: `서로가 마주 보며 다져온 사랑을
-이제 함께 한곳을 바라보며
-걸어갈 수 있는 큰 사랑으로 키우고자 합니다.
+    title: '소중한 분들을 초대합니다',
+    weather: '❄️',           // 날씨 아이콘
+    message: `한 해의 끝자락,
+따스한 마음들이 더욱 소중해지는 계절에
+저희 두 사람이 부부로서 첫 발걸음을 내딛습니다.
 
-저희 두 사람이 사랑의 이름으로
-지켜나갈 수 있게 앞날을
-축복해 주시면 감사하겠습니다.`,
+저희의 첫 시작을 함께 축하해 주신다면
+더욱 뜻깊은 날이 될 것입니다.`,
   },
 
   /* ──────────────────────────────────────────────────────────────
@@ -104,6 +103,33 @@ window.WEDDING = {
   gallery: {
     folder: '우리 둘',        // 사진첩 폴더 이름
     photos: [
+      { src: 'images/gallery/01.jpg', title: '' },
+      { src: 'images/gallery/02.jpg', title: '' },
+      { src: 'images/gallery/03.jpg', title: '' },
+      { src: 'images/gallery/04.jpg', title: '' },
+      { src: 'images/gallery/05.jpg', title: '' },
+      { src: 'images/gallery/06.jpg', title: '' },
+      { src: 'images/gallery/07.jpg', title: '' },
+      { src: 'images/gallery/08.jpg', title: '' },
+      { src: 'images/gallery/09.jpg', title: '' },
+      { src: 'images/gallery/10.jpg', title: '' },
+      { src: 'images/gallery/11.jpg', title: '' },
+      { src: 'images/gallery/12.jpg', title: '' },
+      { src: 'images/gallery/13.jpg', title: '' },
+      { src: 'images/gallery/14.jpg', title: '' },
+      { src: 'images/gallery/15.jpg', title: '' },
+      { src: 'images/gallery/16.jpg', title: '' },
+      { src: 'images/gallery/17.jpg', title: '' },
+      { src: 'images/gallery/18.jpg', title: '' },
+      { src: 'images/gallery/19.jpg', title: '' },
+      { src: 'images/gallery/20.jpg', title: '' },
+      { src: 'images/gallery/21.jpg', title: '' },
+      { src: 'images/gallery/22.jpg', title: '' },
+      { src: 'images/gallery/23.jpg', title: '' },
+      { src: 'images/gallery/24.jpg', title: '' },
+      { src: 'images/gallery/25.jpg', title: '' },
+      { src: 'images/gallery/26.jpg', title: '' },
+      { src: 'images/gallery/27.jpg', title: '' },
     ],
   },
 
@@ -114,6 +140,7 @@ window.WEDDING = {
     // 예) { title: '지하철', lines: ['O호선 OO역 O번 출구 도보 5분'] },
     // 예) { title: '버스',   lines: ['간선 000, 000'] },
     // 예) { title: '주차',   lines: ['건물 지하 주차장 2시간 무료'] },
+    { title: '자가용', lines: ['내비게이션에 "아펠가모 잠실" 검색'] },
   ],
 
   /* ──────────────────────────────────────────────────────────────
