@@ -1,0 +1,53 @@
+# 청첩장 자동 배포
+# main 브랜치에 변경사항이 저장(commit)될 때마다 GitHub Pages 로 배포합니다.
+name: 청첩장 배포
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: 검사 및 묶기
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: config.js 문법 검사
+        run: node --check config.js && node --check assets/cy.js
+
+      - uses: actions/configure-pages@v6
+
+      - name: 배포 파일 모으기
+        run: |
+          mkdir _site
+          cp -r index.html config.js assets images .nojekyll _site/
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    name: 배포
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
